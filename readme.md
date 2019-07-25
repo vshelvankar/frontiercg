@@ -2,11 +2,21 @@
 
 - Created using go modules
 - Developed using Go 1.12
+- Basic funtioanlities are working as expected
 - WIP for unit test cases for handlers
 - WIP for make file
 - WIP for docker file
 - WIP for JWT based protected resource and Authentication
 
+### What next ?
+- Test coverage
+- Better Validations
+- Config file and Environment variables. Plus error messages from errors.properties
+- Docker and K8s support
+- CI/CD
+- Pagination
+- Persistence
+- carmgmt as a microservice
 
 # Sample Request Response
 - ###### Add A CAR
