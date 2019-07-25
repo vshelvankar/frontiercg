@@ -4,8 +4,8 @@ import (
 	"fmt"
 
 	uuid "github.com/satori/go.uuid"
-	m "github.com/vshelvankar/frontiercg/carmgmt/core/models"
-	r "github.com/vshelvankar/frontiercg/carmgmt/core/repository"
+	m "github.com/vshelvankar/frontiercg/carmgmt/models"
+	r "github.com/vshelvankar/frontiercg/carmgmt/repository"
 )
 
 // CarsDataStore is Inmemory datastore for cars

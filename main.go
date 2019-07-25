@@ -4,10 +4,10 @@ import (
 	"log"
 	"net/http"
 
-	r "github.com/vshelvankar/frontiercg/carmgmt/core/repository"
+	r "github.com/vshelvankar/frontiercg/carmgmt/repository"
 
 	c "github.com/vshelvankar/frontiercg/carmgmt/controller"
-	d "github.com/vshelvankar/frontiercg/carmgmt/core/datastore"
+	d "github.com/vshelvankar/frontiercg/carmgmt/datastore"
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"

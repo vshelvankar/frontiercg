@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	m "github.com/vshelvankar/frontiercg/carmgmt/core/models"
+	m "github.com/vshelvankar/frontiercg/carmgmt/models"
 )
 
 var c1 = m.Car{ID: "123", Make: "Volvo", Model: "XC60", Year: "1999"}

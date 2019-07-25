@@ -1,7 +1,7 @@
 package repository
 
 import (
-	models "github.com/vshelvankar/frontiercg/carmgmt/core/models"
+	models "github.com/vshelvankar/frontiercg/carmgmt/models"
 )
 
 // CarsRepository is the repository interface for operations on Cars

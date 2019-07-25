@@ -5,9 +5,9 @@ import (
 
 	"github.com/vshelvankar/frontiercg/carmgmt/logger"
 
-	m "github.com/vshelvankar/frontiercg/carmgmt/core/models"
+	m "github.com/vshelvankar/frontiercg/carmgmt/models"
 
-	r "github.com/vshelvankar/frontiercg/carmgmt/core/repository"
+	r "github.com/vshelvankar/frontiercg/carmgmt/repository"
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/render"
