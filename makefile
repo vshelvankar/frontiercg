@@ -6,15 +6,19 @@ test: ## Run test cases
 fmt: ## Run go fmt on go files
 	go fmt ./...
 
-BINARY=frontier-cg
+EXCECUTABLE=frontier-cg
 
 .PHONY: build
 build: clean test ## Build binary. Can have machine specific seperate build commands
-	go build -v -o ${BINARY}
+	go build -v -o ${EXCECUTABLE}
+
+.PHONY: run
+run: clean test build ## Build binary. Can have machine specific seperate build commands
+	./${EXCECUTABLE}
 
 .PHONY: clean
 clean: ## Remove binary and temp files
-	if [ -f ${BINARY} ] ; then rm ${BINARY} ; fi
+	if [ -f ${EXCECUTABLE} ] ; then rm ${EXCECUTABLE} ; fi
 
 .PHONY: help
 help:
