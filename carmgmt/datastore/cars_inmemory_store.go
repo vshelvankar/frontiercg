@@ -9,17 +9,18 @@ import (
 )
 
 // CarsDataStore is Inmemory datastore for cars
-// To have faster getById there is CarsCacheByID which is like a cache for faster access use case with trade off of redundant car
+// To have faster getById there is CarsCacheByID which is like a cache for faster access use case with trade off of extra memory/storage/space
 type CarsDataStore struct {
-	Cars          []m.Car
-	CarsCacheByID map[string]m.Car
+	Cars []m.Car
+	// Cache storing id vs index in store slice
+	CarsCacheByID map[string]int
 }
 
 // NewCarsInMemoryDataStore is to create CarsDataStore with default values
 func NewCarsInMemoryDataStore() r.CarsRepository {
 	return &CarsDataStore{
 		Cars:          make([]m.Car, 0),
-		CarsCacheByID: make(map[string]m.Car),
+		CarsCacheByID: make(map[string]int),
 	}
 }
 
@@ -33,8 +34,8 @@ func (cds *CarsDataStore) GetAll() ([]m.Car, error) {
 // GetByID is a function to get all cars in datastore
 func (cds *CarsDataStore) GetByID(id string) (*m.Car, error) {
 	// Check if car by id exist in cache. Our cache is always upto date with cars store for easy and fast access
-	if car, ok := cds.CarsCacheByID[id]; ok {
-		return &car, nil
+	if carIndex, ok := cds.CarsCacheByID[id]; ok {
+		return &cds.Cars[carIndex], nil
 	}
 	return nil, fmt.Errorf("Car by id : %s does not exist", id)
 }
@@ -46,7 +47,7 @@ func (cds *CarsDataStore) Create(car *m.Car) (string, error) {
 	car.ID = id
 	cds.Cars = append(cds.Cars, *car)
 	// Updating cache as well
-	cds.CarsCacheByID[car.ID] = *car
+	cds.CarsCacheByID[car.ID] = len(cds.Cars) - 1
 	// Since in memory and store is in our control sending error as nil.
 	// If db/other store propagate error
 	return id, nil

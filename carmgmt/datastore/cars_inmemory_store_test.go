@@ -15,19 +15,19 @@ var newCar = m.Car{Make: "NewMake", Model: "NewModel", Year: "2020"}
 
 var cars = []m.Car{c1, c2, c3}
 
-var carsCache = map[string]m.Car{
-	c1.ID: c1,
-	c2.ID: c2,
-	c3.ID: c3,
+var carsCache = map[string]int{
+	c1.ID: 0,
+	c2.ID: 1,
+	c3.ID: 2,
 }
 
 var noCars = make([]m.Car, 0)
-var noCarsCache = make(map[string]m.Car)
+var noCarsCache = make(map[string]int)
 
 func TestCarsDataStore_GetAll(t *testing.T) {
 	type fields struct {
 		Cars          []m.Car
-		CarsCacheByID map[string]m.Car
+		CarsCacheByID map[string]int
 	}
 	tests := []struct {
 		name    string
@@ -75,7 +75,7 @@ func TestCarsDataStore_GetAll(t *testing.T) {
 func TestCarsDataStore_GetByID(t *testing.T) {
 	type fields struct {
 		Cars          []m.Car
-		CarsCacheByID map[string]m.Car
+		CarsCacheByID map[string]int
 	}
 	type args struct {
 		id string
@@ -128,7 +128,7 @@ func TestCarsDataStore_GetByID(t *testing.T) {
 func TestCarsDataStore_Create(t *testing.T) {
 	type fields struct {
 		Cars          []m.Car
-		CarsCacheByID map[string]m.Car
+		CarsCacheByID map[string]int
 	}
 	type args struct {
 		car *m.Car
@@ -172,7 +172,7 @@ func TestCarsDataStore_Create(t *testing.T) {
 func TestCarsDataStore_Delete(t *testing.T) {
 	type fields struct {
 		Cars          []m.Car
-		CarsCacheByID map[string]m.Car
+		CarsCacheByID map[string]int
 	}
 	type args struct {
 		id string

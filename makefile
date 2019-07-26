@@ -17,7 +17,7 @@ run: clean test build
 	./${EXCECUTABLE}
 
 .PHONY: mod-vendor
-run: clean
+mod-vendor: clean
 	go mod vendor
 
 .PHONY: docker-image
@@ -31,6 +31,7 @@ docker-run: docker-image
 .PHONY: clean
 clean: 
 	if [ -f ${EXCECUTABLE} ] ; then rm ${EXCECUTABLE} ; fi
+	if [ -f frontiercg ] ; then rm frontiercg ; fi
 
 .PHONY: help
 help:
