@@ -21,8 +21,8 @@
 - REST router and handler are based out of go-chi + render
 - Basic funtioanlities are working as expected
 - WIP for unit test cases for handlers
-- WIP for make file
-- WIP for docker file
+- WIP for better make file
+- WIP for better docker file
 
 ### What next ?
 - Test coverage
