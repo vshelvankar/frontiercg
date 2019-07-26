@@ -9,15 +9,23 @@ fmt: ## Run go fmt on go files
 EXCECUTABLE=frontier-cg
 
 .PHONY: build
-build: clean test ## Build binary. Can have machine specific seperate build commands
+build: clean test 
 	go build -v -o ${EXCECUTABLE}
 
 .PHONY: run
-run: clean test build ## Build binary. Can have machine specific seperate build commands
+run: clean test build 
 	./${EXCECUTABLE}
 
+.PHONY: docker-image
+docker-image: clean 
+	docker build --tag=frontiercg .
+
+.PHONY: docker-run
+docker-run: docker-image 
+	docker run -d -p 8090:8080 frontiercg:latest
+
 .PHONY: clean
-clean: ## Remove binary and temp files
+clean: 
 	if [ -f ${EXCECUTABLE} ] ; then rm ${EXCECUTABLE} ; fi
 
 .PHONY: help

@@ -5,6 +5,16 @@
 - Get all Car's
 - Get a particular car
 
+#### make commands
+- make test
+- make fmt
+- make build
+- make run
+- make clean
+- make help
+- make docker-image
+- make docker-run
+
 #### Internals of project
 - Created using go modules
 - Developed using Go 1.12
