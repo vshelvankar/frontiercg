@@ -16,8 +16,12 @@ build: clean test
 run: clean test build 
 	./${EXCECUTABLE}
 
+.PHONY: mod-vendor
+run: clean
+	go mod vendor
+
 .PHONY: docker-image
-docker-image: clean 
+docker-image: clean mod-vendor
 	docker build --tag=frontiercg .
 
 .PHONY: docker-run
