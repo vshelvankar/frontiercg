@@ -1,10 +1,10 @@
 package datastore
 
 import (
-	"fmt"
-
 	uuid "github.com/satori/go.uuid"
+	carerrors "github.com/vshelvankar/frontiercg/carmgmt/errors"
 	m "github.com/vshelvankar/frontiercg/carmgmt/models"
+
 	r "github.com/vshelvankar/frontiercg/carmgmt/repository"
 )
 
@@ -37,7 +37,7 @@ func (cds *carsDataStore) GetByID(id string) (*m.Car, error) {
 	if carIndex, ok := cds.carsCacheByID[id]; ok {
 		return &cds.cars[carIndex], nil
 	}
-	return nil, fmt.Errorf("Car by id : %s does not exist", id)
+	return nil, carerrors.CarNotFoundErr(id)
 }
 
 // Create is a function to add Car to datastore
@@ -57,7 +57,7 @@ func (cds *carsDataStore) Create(car *m.Car) (string, error) {
 func (cds *carsDataStore) Delete(id string) error {
 	// Check if cat by ID exist in DS. If not throw error
 	if _, ok := cds.carsCacheByID[id]; !ok {
-		return fmt.Errorf("Cannot delete car. Car by id : %s does not exist", id)
+		return carerrors.CarNotFoundErr(id)
 	}
 	// delete from datastore
 	for i, car := range cds.cars {

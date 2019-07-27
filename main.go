@@ -33,9 +33,9 @@ func InitRoutes(repo r.CarsRepository) *chi.Mux {
 
 func main() {
 	// init in memory datastore for cars
-	r := d.NewCarsInMemoryDataStore()
+	repo := d.NewCarsInMemoryDataStore()
 	// Init routes and middlewares
-	router := InitRoutes(r)
+	router := InitRoutes(repo)
 
 	walkFunc := func(method string, route string, handler http.Handler, middlewares ...func(http.Handler) http.Handler) error {
 		log.Printf("%s %s\n", method, route) // Walk and print out all routes

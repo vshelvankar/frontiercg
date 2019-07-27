@@ -105,6 +105,12 @@ func TestCarRequest_Bind(t *testing.T) {
 			args:    args{&http.Request{}},
 			wantErr: true,
 		},
+		{
+			name:    "Bind post process validation failure case where year is not a number",
+			fields:  fields{"abc", "def", "aaaa"},
+			args:    args{&http.Request{}},
+			wantErr: true,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

@@ -4,6 +4,8 @@ import (
 	"errors"
 	"net/http"
 	"strconv"
+
+	e "github.com/vshelvankar/frontiercg/carmgmt/errors"
 )
 
 // Car struct to hold all car properties
@@ -52,15 +54,15 @@ func NewCar(cr *CarRequest) *Car {
 func (c *CarRequest) Bind(r *http.Request) error {
 	// validations for required fields in Car
 	if c.Make == "" {
-		return errors.New("Missing required Make field in request payload")
+		return e.New(e.MissingMakeFieldForCreateCode, e.MissingMakeFieldForCreateMsg)
 	}
 
 	if c.Model == "" {
-		return errors.New("Missing required Model field in request payload")
+		return e.New(e.MissingModelFieldForCreateCode, e.MissingModelFieldForCreateMsg)
 	}
 
 	if c.Year == "" {
-		return errors.New("Missing required Year field in request payload")
+		return e.New(e.MissingYearFieldForCreateCode, e.MissingYearFieldForCreateMsg)
 	}
 
 	if _, err := strconv.Atoi(c.Year); err != nil {
