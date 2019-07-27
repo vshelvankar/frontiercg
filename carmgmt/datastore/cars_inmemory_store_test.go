@@ -56,9 +56,9 @@ func TestCarsDataStore_GetAll(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			cds := &CarsDataStore{
-				Cars:          tt.fields.Cars,
-				CarsCacheByID: tt.fields.CarsCacheByID,
+			cds := &carsDataStore{
+				cars:          tt.fields.Cars,
+				carsCacheByID: tt.fields.CarsCacheByID,
 			}
 			got, err := cds.GetAll()
 			if (err != nil) != tt.wantErr {
@@ -109,9 +109,9 @@ func TestCarsDataStore_GetByID(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			cds := &CarsDataStore{
-				Cars:          tt.fields.Cars,
-				CarsCacheByID: tt.fields.CarsCacheByID,
+			cds := &carsDataStore{
+				cars:          tt.fields.Cars,
+				carsCacheByID: tt.fields.CarsCacheByID,
 			}
 			got, err := cds.GetByID(tt.args.id)
 			if (err != nil) != tt.wantErr {
@@ -151,9 +151,9 @@ func TestCarsDataStore_Create(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			cds := &CarsDataStore{
-				Cars:          tt.fields.Cars,
-				CarsCacheByID: tt.fields.CarsCacheByID,
+			cds := &carsDataStore{
+				cars:          tt.fields.Cars,
+				carsCacheByID: tt.fields.CarsCacheByID,
 			}
 			got, err := cds.Create(tt.args.car)
 			if (err != nil) != tt.wantErr {
@@ -204,9 +204,9 @@ func TestCarsDataStore_Delete(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			cds := &CarsDataStore{
-				Cars:          tt.fields.Cars,
-				CarsCacheByID: tt.fields.CarsCacheByID,
+			cds := &carsDataStore{
+				cars:          tt.fields.Cars,
+				carsCacheByID: tt.fields.CarsCacheByID,
 			}
 			if err := cds.Delete(tt.args.id); (err != nil) != tt.wantErr {
 				t.Errorf("CarsDataStore.Delete() error = %v, wantErr %v", err, tt.wantErr)

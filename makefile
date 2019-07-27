@@ -21,7 +21,7 @@ mod-vendor: clean
 	go mod vendor
 
 .PHONY: docker-image
-docker-image: clean mod-vendor
+docker-image: clean test mod-vendor
 	docker build --tag=frontiercg .
 
 .PHONY: docker-run
